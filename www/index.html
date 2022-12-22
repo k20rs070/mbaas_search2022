@@ -13,19 +13,38 @@
     // NCMB アクセスの準備
     let ncmb = new NCMB(appKey, clientKey);
     // 本アプリで使うクラスの指定。const は定数の宣言。変更できない変数と思えば良い。
-    const db = "m";
+    //const db = "m";
+    let TestDataClass = ncmb.DataStore("m");
 
     function fetchAll() {
-      let TestDataClass = ncmb.DataStore(db);
+      //let TestDataClass = ncmb.DataStore(db);
       TestDataClass.order("name",false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
     }
 
+    // function enterData() {
+    //   let uTdata = new UTdata();
+    //   let value = $("#name").val();
+    //   uTdata.set("name", value)
+    //     .save()
+    //     .then(function(results) {
+    //       $("#display").removeClass();
+    //       $("#display").addClass("bg-success");
+    //       $("#display").html("enter success");
+    //     })
+    //     .catch(function(results) {
+    //       $("#display").removeClass();
+    //       $("#display").addClass("bg-warning");
+    //       $("#display").html("enter fail");
+    //     })
+    // }
+
+
     function searchName() {
       let name = $("#name").val();
-      let TestDataClass = ncmb.DataStore(db);
+      //let TestDataClass = ncmb.DataStore(db);
       TestDataClass.regularExpressionTo("name", name).fetchAll()
         .then(function(results) {
           showResults(results);
@@ -34,7 +53,7 @@
 
     function searchLevel() {
       let level = parseInt($("#level").val());
-      let TestDataClass = ncmb.DataStore(db);
+      //let TestDataClass = ncmb.DataStore(db);
       TestDataClass.equalTo("level", level).fetchAll()
         .then(function(results) {
           showResults(results);
@@ -43,7 +62,7 @@
 
     function searchLevelLT() {
       let level = parseInt($("#level").val());
-      let TestDataClass = ncmb.DataStore(db);
+      //let TestDataClass = ncmb.DataStore(db);
       TestDataClass.lessThan("level", level).fetchAll()
         .then(function(results) {
           showResults(results);
@@ -52,7 +71,7 @@
 
     function searchLevelGT() {
       let level = parseInt($("#level").val());
-      let TestDataClass = ncmb.DataStore(db);
+      //let TestDataClass = ncmb.DataStore(db);
       TestDataClass.greaterThan("level", level).fetchAll()
         .then(function(results) {
           showResults(results);
@@ -82,11 +101,11 @@
   <h1>mBaaS search</h1>
   <div>
     <label for="name">name:</label>
-    <input id="name" type="text" placeholder="monster name">
+    <input id="name" type="text" class="input" placeholder="monster name">
   </div>
   <div>
     <label for="level">level:</label>
-    <input id="level" type="number" placeholder="monster level">
+    <input id="level" type="number" class="input" placeholder="monster level">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
@@ -95,6 +114,11 @@
     <button class="btn" onclick="searchLevelLT()">Level &lt;</button>
     <button class="btn" onclick="searchLevel()">Level</button>
     <button class="btn" onclick="searchLevelGT()">Level &gt;</button>
+  </div>
+  <div>
+      <label for="name">name:</label>
+      <input type="text" id="name" class="input2" placeholder="モンスター名">
+      <button onclick="enterData()" class="btn2" role="button">Enter</button>
   </div>
   <div id="message">message area</div>
 </body>

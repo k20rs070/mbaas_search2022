@@ -13,8 +13,12 @@ label {
   width: 20%;
 }
 
-input {
+.input {
   width: 75%;
+}
+
+.input2 {
+  width: 50%;
 }
 
 #button {
@@ -28,6 +32,17 @@ input {
   height: 4ex;
   width: 5em;
   border-radius: 10px;
+  color: white;
+  background-color: blue;
+}
+
+.btn2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 10pt;
+  height: 4ex;
+  width: 5em;
+  border-radius: 20px;
   color: white;
   background-color: blue;
 }
