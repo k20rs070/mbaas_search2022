@@ -52,6 +52,12 @@ label {
   border-color: grey;
 }
 
+.results {
+  border-style: solid;
+  border-color: grey;
+  background-color: white;
+}
+
 table {
   border-collapse: collapse;
 }
